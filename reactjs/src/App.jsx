@@ -1,34 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
+  const [todo, settodo] = useState([])
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+    <div className='m-8'>
+    <h1>Todo App</h1>
+    <input type="text" className='bg-purple-400' onKeyDown={(event)=> {
+      if (event.code==="Enter") {
+        console.log("Enter pressed");
+        settodo([...todo,event.target.value])
+        event.target.value=""
+      }
+  }} />
+  <br />
+  {
+    todo.map((value,index)=>{
+      return <div key={index} className='mt-2 flex justify-between'>
+        <div>
+        {index+1}. {value}
+        </div>
+        <div className='text-red-500 cursor-pointer' onClick={()=> {
+          const newTodoList=todo.filter((value,i)=>{
+            return (i!==index) ? true : false;
+          })
+          settodo(newTodoList)
+        }}>Delete</div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    })
+  }
+    </div>
+    </div>
   )
 }
 
