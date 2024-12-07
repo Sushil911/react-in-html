@@ -1,38 +1,53 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.js"></script>
+
+    <script type="text/babel">
+  const Greetings = () => {
+    return (
+        <div>
+            <h1>Hi there</h1>    
+        </div>
+    )
+  }
+  const AboutUs = () => {
+    return (
+        <div>About Us</div>
+    )
+  }
+  const ContactUs = () => {
+    return (
+        <div>Contact Us</div>
+    )
+  }
+  const Home = () => {
+    return (
+        <div>
+            Home
+        </div>
+    )
+  }
+  ReactDOM.render(
     <div>
-        <canvas id="myChart"></canvas>
-      </div>
-      
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      
-      <script>
-        const ctx = document.getElementById('myChart');
-      
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-              label: '# of Votes',
-              data: [10, 15, 3, 5, 20, 3],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      </script>
-</body>
+        <Greetings />
+        <AboutUs />
+        <ContactUs />
+        <Home />
+    </div>,
+    document.getElementById("root")
+  );
+</script>
+
+  </body>
+
 </html>
